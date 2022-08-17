@@ -1,0 +1,80 @@
+.bannerContainer {
+  margin-top: 2rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+.bannerOverlay {
+  z-index: 1;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #0e0e0e 66.15%);
+}
+
+.bannerImage {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  .imageContainer {
+    width: 50%;
+  }
+}
+
+.homeBanner {
+  color: white;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.title {
+  width: 50%;
+  font-family: var(--font-primary);
+  text-align: center;
+  .titleText {
+    font-size: 3.5rem;
+    font-family: var(--font-primary);
+  }
+  p {
+    margin: 1rem 0rem;
+  }
+  .descriptionText {
+    font-size: 1.2rem;
+    font-weight: 300;
+    line-height: 1.5;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .title {
+    width: 90%;
+    .titleText {
+      font-size: 2.5rem;
+    }
+    .descriptionText {
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+    .descriptionEmail {
+      flex-direction: column;
+    }
+  }
+
+  .bannerImage {
+    padding: 2rem 1rem;
+    margin: 0px;
+    width: 100%;
+    .imageContainer {
+      width: 100%;
+    }
+  }
+
+  .banner-overlay {
+    height: 35%;
+  }
+}
