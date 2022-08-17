@@ -60,7 +60,7 @@ function Homepackage({ contentData }) {
                 key={index}
                 alt="commandlineImage"
                 layout={"fill"}
-                width="70%"
+                width="80%"
               />
             )
         )}
