@@ -51,6 +51,20 @@ body {
   cursor: pointer;
 }
 
+.mainTitle {
+  font-size: 3.5rem;
+  font-family: var(--font-primary);
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.mainDescription {
+  color: white;
+  font-size: 1.5rem;
+  font-family: var(--font-primary);
+  text-align: center;
+}
+
 .bg_pattern {
   z-index: -1;
   position: absolute;
@@ -141,6 +155,13 @@ body {
 /* Tabular Responsive */
 
 @media screen and (max-width: 700px) {
+  .mainTitle {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+  }
+  .mainDescription {
+    font-size: 1.2rem;
+  }
   .section__padding {
     padding: 4rem;
   }
@@ -161,6 +182,13 @@ body {
 /* Mobile Responsive */
 
 @media screen and (max-width: 550px) {
+  .mainTitle {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+  .mainDescription {
+    font-size: 1rem;
+  }
   .section__padding {
     padding: 2rem 2rem;
   }

@@ -1,0 +1,69 @@
+.featurepointContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  margin: 2rem 0rem;
+  flex-direction: row-reverse;
+  .imageContainer {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .textContainer {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .title,
+    .description {
+      width: 75%;
+    }
+
+    .title {
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 1.5rem;
+      margin: 0.5rem;
+    }
+
+    .description {
+      font-family: var(--font-primary);
+      font-style: normal;
+      font-weight: normal;
+      font-size: calc(17px + 1 * ((100vw - 320px) / 680));
+      letter-spacing: 0.2px;
+      line-height: 25px;
+    }
+  }
+}
+
+.containerRow {
+  flex-direction: row;
+}
+
+.containerRowReverse {
+  flex-direction: row-reverse;
+}
+
+@media screen and (max-width: 800px) {
+  .featurepointContainer {
+    flex-direction: column;
+    margin: 4rem 0rem;
+    .textContainer {
+      width: 100%;
+      .title,
+      .description {
+        text-align: center;
+      }
+    }
+    .imageContainer {
+      width: 100%;
+    }
+  }
+}

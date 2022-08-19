@@ -6,13 +6,14 @@ import {
   Footer,
   Homebanner,
   Homepackage,
-  // Homebackedby,
-  // Homekeydiffrence,
+  Homebackedby,
+  Homekeydiffrence,
   Homekeyfeatures,
+  HomeEmail,
 } from "../containers";
 
 import { CookiesFloat, DiscordFloat } from "/components";
-// import HomeEmail from "../../containers/home-email/HomeEmail";
+
 import axios from "axios";
 import { baseUrl } from "../utils/Data/config";
 
@@ -47,21 +48,22 @@ function HomePage() {
             <Homepackage contentData={contentData["package"]} />
           )}
 
-          {/* {contentData?.["keyFeatures"] && (
+          {contentData?.["keyFeatures"] && (
             <Homekeyfeatures contentData={contentData["keyFeatures"]} />
-          )} */}
-          {/*
-          {contentData["keyDiffrence"] && (
+          )}
+
+          {contentData?.["keyDiffrence"] && (
             <Homekeydiffrence contentData={contentData["keyDiffrence"]} />
           )}
-          {contentData["backedBy"] && (
+
+          {contentData?.["backedBy"] && (
             <Homebackedby contentData={contentData["backedBy"]} />
           )}
 
-          {contentData["email"] && (
+          {contentData?.["email"] && (
             <HomeEmail contentData={contentData["email"]} />
           )}
-          */}
+
           <Footer />
           <DiscordFloat />
           <CookiesFloat />
