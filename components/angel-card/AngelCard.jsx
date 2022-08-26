@@ -4,27 +4,35 @@ import Styles from "./AngelCard.module.scss";
 import { IoLogoLinkedin } from "react-icons/io";
 import { AiFillTwitterSquare } from "react-icons/ai";
 import { mediaUrl } from "../../utils/Data/config";
+import ImageBox from "../ImageBox/ImageBox";
 
 function Angelcard({ name, designation, linkedin, tweeter, image }) {
   return (
-    <div className="angel_card_container">
-      <Image src={mediaUrl + image} alt="" />
+    <div className={Styles.angelCardContainer}>
+      <span className={Styles.img}>
+        <ImageBox
+          src={mediaUrl + image}
+          style={{ borderRadius: "50%" }}
+          alt="angelpic"
+          layout="fill"
+        />
+      </span>
 
-      <div className="member_info">
-        <p className="member_name">{name}</p>
-        <div className="member_designation">{designation}</div>
+      <div className={Styles.memberInfo}>
+        <p className={Styles.memberName}>{name}</p>
+        <div className={Styles.memberDesignation}>{designation}</div>
 
-        <div className="icons">
+        <div className={Styles.icons}>
           {linkedin && (
             <IoLogoLinkedin
-              className="social_icon"
+              className={Styles.socialIcon}
               onClick={() => window.open(linkedin, "_blank")}
             />
           )}
 
           {tweeter && (
             <AiFillTwitterSquare
-              className="social_icon"
+              className={Styles.socialIcon}
               onClick={() => window.open(tweeter, "_blank")}
             />
           )}

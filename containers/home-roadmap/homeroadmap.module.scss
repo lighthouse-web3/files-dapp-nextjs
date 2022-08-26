@@ -1,0 +1,31 @@
+.roadmapContainer {
+  .title {
+    width: 100%;
+  }
+  .roadmapLineContainer {
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin: 3rem 0rem;
+    .upper,
+    .lower {
+      display: flex;
+      flex-direction: row;
+      .quaterContainer,
+      .quaterContainer {
+        width: 30%;
+        height: 300px;
+      }
+    }
+
+    .roadmapLine {
+      width: 100%;
+      border: 1px solid var(--clr-pink);
+    }
+
+    .margin20 {
+      margin-left: 20%;
+    }
+  }
+}

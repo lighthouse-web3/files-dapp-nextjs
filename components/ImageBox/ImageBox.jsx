@@ -2,7 +2,16 @@ import Image from "next/image";
 import React, { useState } from "react";
 import Styles from "./ImageBox.module.scss";
 
-function ImageBox({ width, maxWidth, height, maxHeight, alt, src, ...rest }) {
+function ImageBox({
+  width,
+  maxWidth,
+  height,
+  maxHeight,
+  alt,
+  src,
+  style,
+  ...rest
+}) {
   let dimensions = {};
   width ? (dimensions["width"] = width) : "100%";
   maxWidth ? (dimensions["maxWidth"] = maxWidth) : "100%";
@@ -13,7 +22,13 @@ function ImageBox({ width, maxWidth, height, maxHeight, alt, src, ...rest }) {
 
   return (
     <div className={Styles.imageContainer} style={dimensions}>
-      <Image className={Styles.image} {...rest} alt={alt} src={src} />
+      <Image
+        className={Styles.image}
+        {...rest}
+        style={style}
+        alt={alt}
+        src={src}
+      />
     </div>
   );
 }

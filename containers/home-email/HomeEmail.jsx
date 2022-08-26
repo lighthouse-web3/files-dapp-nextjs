@@ -18,7 +18,12 @@ function HomeEmail({ contentData }) {
   return (
     <div className={Styles.HomeEmailContainer}>
       <div className={Styles.title + " section__padding"}>
-        <p className="gradient__text mainTitle">{contentData.title}</p>
+        <p
+          className="gradient__text mainTitle"
+          style={{ marginBottom: "10px" }}
+        >
+          {contentData.title}
+        </p>
         <div className="mainDescription section__padding">
           <p dangerouslySetInnerHTML={{ __html: contentData.description }}></p>
         </div>

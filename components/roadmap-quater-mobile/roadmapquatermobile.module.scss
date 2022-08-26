@@ -1,0 +1,68 @@
+.roadmapMobileContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  .pointsTable {
+    width: 75%;
+    margin: 2rem 0rem;
+    padding: 0;
+    tr {
+      .line {
+        width: 50px;
+        border-right: 1.5px solid var(--clr-pink);
+        position: relative;
+        .pointer {
+          position: absolute;
+          font-size: 10px;
+          top: calc(50% - 5px);
+          right: -6px;
+          color: var(--clr-pink);
+        }
+      }
+
+      .text {
+        color: white;
+        font-size: calc(17px + 1 * ((100vw - 320px) / 680));
+        line-height: 26px;
+        padding: 2rem 4rem;
+        font-family: var(--font-primary);
+        font-weight: 400;
+        .gradientText {
+          font-size: 1rem;
+          font-weight: bold;
+        }
+        .currentMilestone {
+          font-size: 1.2rem;
+          font-weight: bolder;
+        }
+
+        table {
+          .points {
+            width: 75%;
+            color: var(--clr-roadmap-text);
+            .bullet {
+              width: 7px;
+              display: flex;
+              justify-content: flex-start;
+              align-items: center;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .pointsTable {
+    width: 100%;
+    tr {
+      .line {
+        width: 15px;
+      }
+      .text {
+        padding: 2rem 2rem;
+      }
+    }
+  }
+}

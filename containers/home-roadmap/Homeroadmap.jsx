@@ -1,65 +1,51 @@
-import React from 'react'
-import RoadmapQuaterMobile from '../../components/roadmap-quater-mobile/RoadmapQuaterMobile';
-import Roadmapquater from '../../components/roadmap-quater/Roadmapquater'
-import './homeroadmap.css'
+import React from "react";
+import { Roadmapquater, RoadmapQuaterMobile } from "../../components";
 
+import Styles from "./homeroadmap.module.scss";
 
 function Homeroadmap({ contentData }) {
-    const { innerWidth: width } = window;
+  const { innerWidth: width } = window;
 
-    const roadmapData = contentData;
-    return (
-        <div className=' homeroadmap_container' id="roadmap">
-            <div className="section__padding_x title">
-                <p className='gradient__text title__text'>Roadmap</p>
+  const roadmapData = contentData;
+  return (
+    <div className={Styles.roadmapContainer} id="roadmap">
+      <div className={"section__padding_x " + Styles.title}>
+        <p className="gradient__text mainTitle">Roadmap</p>
+      </div>
+
+      {width > 900 && (
+        <div className={Styles.roadmapLineContainer}>
+          <div className={"section__padding_x " + Styles.upper}>
+            <div className={Styles.quaterContainer + " " + Styles.margin20}>
+              <Roadmapquater {...roadmapData[1]} />
             </div>
+            <div className={Styles.quaterContainer + " " + Styles.margin20}>
+              <Roadmapquater {...roadmapData[3]} />
+            </div>
+          </div>
 
-            {
-                width > 900 &&
-                <div className="roadmap_line_container">
+          <div className={Styles.roadmapLine}></div>
 
-                        <div className=" section__padding_x upper">
-                            <div className="quater_container margin20" >
-                                <Roadmapquater {...roadmapData[1]} />
-                            </div>
-                            <div className="quater_container margin20" >
-                                <Roadmapquater {...roadmapData[3]} />
-                            </div>
-                        </div>
-
-                        <div className="roadmap_line">
-                        </div>
-
-                        <div className=" section__padding_x lower">
-                            <div className="quater_container">
-                                <Roadmapquater {...roadmapData[0]} />
-                            </div>
-                            <div className="quater_container margin20" >
-                                <Roadmapquater {...roadmapData[2]} />
-                            </div>
-                            <div className="quater_container margin20" >
-                                <Roadmapquater {...roadmapData[4]} />
-                            </div>
-                        </div>
-
-
-                    </div>
-            }
-            {
-
-                width < 900 && (
-                    <div className="section__padding_x">
-                        <RoadmapQuaterMobile  {...{ data: roadmapData }} />
-                    </div>
-                )
-
-            }
-
-
-
+          <div className={"section__padding_x " + Styles.lower}>
+            <div className={Styles.quaterContainer}>
+              <Roadmapquater {...roadmapData[0]} />
+            </div>
+            <div className={Styles.quaterContainer + " " + Styles.margin20}>
+              <Roadmapquater {...roadmapData[2]} />
+            </div>
+            <div className={Styles.quaterContainer + " " + Styles.margin20}>
+              <Roadmapquater {...roadmapData[4]} />
+            </div>
+          </div>
         </div>
-
-    )
+      )}
+      {width < 900 && (
+        <div className="section__padding_x">
+          <RoadmapQuaterMobile {...{ data: roadmapData }} />
+        </div>
+      )}
+    </div>
+  );
 }
 
-export default Homeroadmap
+export default Homeroadmap;

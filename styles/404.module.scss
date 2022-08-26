@@ -1,0 +1,35 @@
+.PageNotFound {
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  .logoContainer {
+    width: 40%;
+    justify-content: center;
+    height: auto;
+    display: flex;
+    align-items: center;
+  }
+
+  .title {
+    text-align: center;
+    .title__text {
+      font-weight: 600;
+      font-size: 3rem;
+    }
+    .typeAnimation {
+      font-family: "Montserrat";
+      color: white;
+      font-size: 2rem;
+    }
+  }
+
+  .goBack {
+    margin-top: 2rem;
+    font-family: "Montserrat";
+    text-decoration: underline;
+  }
+}

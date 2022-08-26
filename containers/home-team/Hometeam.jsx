@@ -1,34 +1,29 @@
-import React from 'react'
-import './hometeam.css'
-import { Teamcard } from '../../components'
-
+import React from "react";
+import Styles from "./hometeam.module.scss";
+import { Teamcard } from "../../components";
 
 function Hometeam({ contentData }) {
-    const teamArr = contentData.members;
-    return (
-        <div className='section__padding hometeam_container' id="team">
-            <div className="title">
-                <p className='gradient__text title__text'>{contentData.title}</p>
+  const teamArr = contentData.members;
+  return (
+    <div className={"section__padding " + Styles.hometeamContainer} id="team">
+      <div className={Styles.title}>
+        <p className={"gradient__text mainTitle " + Styles.titleText}>
+          {contentData.title}
+        </p>
 
-                <p className='description__text' dangerouslySetInnerHTML={{ __html: contentData.description }}>
-                </p>
-            </div>
+        <p
+          className="mainDescription"
+          dangerouslySetInnerHTML={{ __html: contentData.description }}
+        ></p>
+      </div>
 
-            <div className="team_members">
-                {teamArr.map((member, index) =>
-                    <Teamcard key={index} {...member} />
-                )}
-            </div>
-
-
-
-
-
-
-
-
-        </div>
-    )
+      <div className={Styles.teamMembers}>
+        {teamArr.map((member, index) => (
+          <Teamcard key={index} {...member} />
+        ))}
+      </div>
+    </div>
+  );
 }
 
-export default Hometeam
+export default Hometeam;
