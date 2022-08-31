@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { DiscordFloat } from "../components";
+import { DiscordFloat, MetaData } from "../components";
 import { Footer, Header, BlogList, BlogRecent } from "../containers";
 import { baseUrl } from "../utils/Data/config";
 import Styles from "../styles/blogs.module.scss";
@@ -22,6 +22,7 @@ function Blogs() {
     <div className={Styles.Blogs}>
       {showPage && (
         <>
+          <MetaData />
           <div className={"bg_pattern2 " + Styles.Blogs__pattern2}></div>
           <div className="bg_pattern4"></div>
           <div className="bg_pattern5"></div>

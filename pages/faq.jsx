@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { baseUrl } from "../utils/Data/config";
-import { DiscordFloat } from "../components";
+import { DiscordFloat, MetaData } from "../components";
 import { FAQContainer, Footer, Header } from "../containers";
 import Styles from "../styles/faq.module.scss";
 
@@ -22,6 +22,7 @@ function FAQPage() {
     <div className={Styles.FAQPage}>
       {showPage && (
         <>
+          <MetaData />
           <div className="bg_pattern2"></div>
           <div className="bg_pattern3"></div>
           <div className="bg_pattern4"></div>

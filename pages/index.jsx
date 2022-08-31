@@ -12,8 +12,7 @@ import {
   HomeEmail,
 } from "../containers";
 
-import { CookiesFloat, DiscordFloat } from "/components";
-
+import { CookiesFloat, DiscordFloat, MetaData } from "../components";
 import axios from "axios";
 import { baseUrl } from "../utils/Data/config";
 
@@ -34,6 +33,7 @@ function HomePage() {
     <div className={HomepageStyles.homepage}>
       {showPage && (
         <>
+          <MetaData />
           <div className="bg_pattern2"></div>
           <div className="bg_pattern3"></div>
           <div className="bg_pattern4"></div>

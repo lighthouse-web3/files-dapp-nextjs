@@ -8,39 +8,37 @@ import {
   MdSupervisedUserCircle,
 } from "react-icons/md";
 
-import { DiscordFloat, ImageBox, RecentBlogCard } from "../../components";
+import {
+  DiscordFloat,
+  ImageBox,
+  MetaData,
+  RecentBlogCard,
+} from "../../components";
 import { Footer, Header } from "../../containers";
 import { baseUrl, mediaUrl } from "../../utils/Data/config";
 import ReactMarkdown from "react-markdown";
 import { notify } from "../../utils/services/notification";
-
 import { useRouter } from "next/router";
 import Styles from "../../styles/viewBlog.module.scss";
-import Head from "next/head";
 
-const getBlogByID = async (blogs, id, setShowBlog) => {
+const getBlogByID = async (blogs, id, setShowBlog, router) => {
   console.log("getblogBYID", blogs, id);
   let blog = blogs.filter((blog) => blog?.id === +id);
   console.log(blog, "selected Blog");
   if (blog.length > 0) {
     setShowBlog(blog[0]);
   } else {
-    // navigate("/blogs");
+    router.push("/blogs");
   }
 };
 
 const getSimilarBlogs = (currentBlog, blogs, setSimilarBlogs) => {
-  console.log("currentBlog", currentBlog);
-  console.log("blogs", blogs);
-
   let similarBlogs = blogs.filter((blog) => {
     return (
       blog?.attributes?.otherInfo?.category ===
       currentBlog?.attributes?.otherInfo?.category
     );
   });
-
-  console.log(similarBlogs, "Similar Blogs");
 
   similarBlogs.length > 0 && setSimilarBlogs(similarBlogs);
 };
@@ -65,9 +63,12 @@ function ViewBlog() {
         console.log(res);
         res["status"] === 200 && setAllBlogs(res["data"]?.["data"]);
         console.log(params);
-        await getBlogByID(res["data"]?.["data"], params[0], setShowBlog);
-        console.log("---");
-        // getSimilarBlogs(showBlog, allBlogs, setSimilarBlogs)
+        await getBlogByID(
+          res["data"]?.["data"],
+          params[0],
+          setShowBlog,
+          router
+        );
         setShowPage(true);
       } catch (error) {}
     })();
@@ -81,29 +82,16 @@ function ViewBlog() {
     <div className={Styles.viewBlog}>
       {showPage && (
         <>
-          <Head>
-            <meta property="og:url" content="https://www.lighthouse.storage/" />
-            <meta
-              property="og:title"
-              content={showBlog?.attributes?.Seo?.metaTitle || "Lighthouse"}
-            />
-            <meta
-              property="og:description"
-              content={
-                showBlog?.attributes?.Seo?.metaDiscription?.slice(0, 100) +
-                  "..." ||
-                "Permanent Storage Redefined | store files on decentralized network for lifetime at a fixed price"
-              }
-            />
-            <meta
-              property="og:image"
-              content={
-                mediaUrl +
-                  showBlog?.attributes?.coverImage?.data?.attributes?.url ||
-                "https://www.lighthouse.storage/logo.png"
-              }
-            />
-          </Head>
+          <MetaData
+            title={showBlog?.attributes?.Seo?.metaTitle}
+            description={
+              showBlog?.attributes?.Seo?.metaDiscription?.slice(0, 100) + "..."
+            }
+            image={
+              mediaUrl + showBlog?.attributes?.coverImage?.data?.attributes?.url
+            }
+            url={window.location.href}
+          />
           <div className="bg_pattern4"></div>
           <div className="bg_pattern5"></div>
           <Header />

@@ -11,3 +11,4 @@ export { default as Pagination } from "./Pagination/Pagination";
 export { default as Roadmapquater } from "./roadmap-quater/Roadmapquater";
 export { default as RoadmapQuaterMobile } from "./roadmap-quater-mobile/RoadmapQuaterMobile";
 export { default as QuestionBox } from "./QuestionBox/QuestionBox";
+export { default as MetaData } from "./metadata/Metadata";

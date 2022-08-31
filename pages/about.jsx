@@ -7,7 +7,7 @@ import {
   AboutAngels,
 } from "../containers";
 import Styles from "../styles/About.module.scss";
-import { DiscordFloat } from "../components";
+import { DiscordFloat, MetaData } from "../components";
 import axios from "axios";
 import { baseUrl } from "../utils/Data/config";
 
@@ -29,6 +29,7 @@ function AboutPage() {
     <div className={Styles.about}>
       {showPage && (
         <>
+          <MetaData />
           <div className="bg_pattern2"></div>
           <div className="bg_pattern4"></div>
           <div className="bg_pattern5"></div>
