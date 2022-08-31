@@ -5,22 +5,24 @@ import { Footer, Header, BlogList, BlogRecent } from "../containers";
 import { baseUrl } from "../utils/Data/config";
 import Styles from "../styles/blogs.module.scss";
 
-function Blogs() {
-  const [allBlogs, setAllBlogs] = useState(null);
-  const [showPage, setShowPage] = useState(false);
-  useEffect(() => {
-    (async () => {
-      try {
-        const res = await axios.get(`${baseUrl}/blogs?populate=*`);
-        res["status"] === 200 && setAllBlogs(res["data"]?.["data"]);
+export const getStaticProps = async () => {
+  let blogsData = null;
+  try {
+    const res = await axios.get(`${baseUrl}/blogs?populate=*`);
+    blogsData = res["status"] === 200 ? res["data"]?.["data"] : null;
+  } catch (error) {}
+  return {
+    props: {
+      blogsData,
+    },
+  };
+};
+function Blogs({ blogsData }) {
+  const [allBlogs, setAllBlogs] = useState(blogsData);
 
-        setShowPage(true);
-      } catch (error) {}
-    })();
-  }, []);
   return (
     <div className={Styles.Blogs}>
-      {showPage && (
+      {blogsData && (
         <>
           <MetaData />
           <div className={"bg_pattern2 " + Styles.Blogs__pattern2}></div>

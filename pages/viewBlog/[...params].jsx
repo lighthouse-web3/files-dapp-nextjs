@@ -21,22 +21,10 @@ import { notify } from "../../utils/services/notification";
 import { useRouter } from "next/router";
 import Styles from "../../styles/viewBlog.module.scss";
 
-const getBlogByID = async (blogs, id, setShowBlog, router) => {
-  console.log("getblogBYID", blogs, id);
-  let blog = blogs.filter((blog) => blog?.id === +id);
-  console.log(blog, "selected Blog");
-  if (blog.length > 0) {
-    setShowBlog(blog[0]);
-  } else {
-    router.push("/blogs");
-  }
-};
-
 const getSimilarBlogs = (currentBlog, blogs, setSimilarBlogs) => {
   let similarBlogs = blogs.filter((blog) => {
     return (
-      blog?.attributes?.otherInfo?.category ===
-      currentBlog?.attributes?.otherInfo?.category
+      blog?.attributes?.otherInfo?.category === currentBlog?.otherInfo?.category
     );
   });
 
@@ -48,11 +36,45 @@ const copyToClipboard = () => {
   notify("Link Copied", "success");
 };
 
-function ViewBlog() {
-  const [allBlogs, setAllBlogs] = useState(null);
-  const [showBlog, setShowBlog] = useState(null);
+export const getStaticPaths = async () => {
+  const res = await axios.get(`${baseUrl}/blogs?populate=*`);
+  let allBlogs = res["status"] === 200 ? res["data"]?.["data"] : null;
+
+  const paths = allBlogs.map((blog) => {
+    return {
+      params: {
+        params: [
+          blog["id"] + "",
+          blog?.attributes?.title?.replaceAll(" ", "-"),
+        ],
+      },
+    };
+  });
+
+  return {
+    paths,
+    fallback: false,
+  };
+};
+
+export const getStaticProps = async (context) => {
+  const id = context.params.params[0];
+  let blogData = "null";
+  try {
+    const res = await axios.get(`${baseUrl}/blogs/${id}?populate=*`);
+    blogData =
+      res["status"] === 200 ? res["data"]?.["data"]?.["attributes"] : null;
+  } catch (error) {}
+  return {
+    props: {
+      blogData,
+    },
+  };
+};
+
+function ViewBlog({ blogData }) {
+  const [showBlog, setShowBlog] = useState(blogData);
   const [similarBlogs, setSimilarBlogs] = useState([]);
-  const [showPage, setShowPage] = useState(false);
   const router = useRouter();
 
   const { params } = router.query;
@@ -60,37 +82,21 @@ function ViewBlog() {
     (async () => {
       try {
         const res = await axios.get(`${baseUrl}/blogs?populate=*`);
-        console.log(res);
-        res["status"] === 200 && setAllBlogs(res["data"]?.["data"]);
-        console.log(params);
-        await getBlogByID(
-          res["data"]?.["data"],
-          params[0],
-          setShowBlog,
-          router
-        );
-        setShowPage(true);
+        res["status"] === 200 &&
+          getSimilarBlogs(showBlog, res["data"]?.["data"], setSimilarBlogs);
       } catch (error) {}
     })();
   }, [params]);
 
-  useEffect(() => {
-    showBlog && getSimilarBlogs(showBlog, allBlogs, setSimilarBlogs);
-  }, [showBlog]);
-
   return (
     <div className={Styles.viewBlog}>
-      {showPage && (
+      {blogData && (
         <>
           <MetaData
-            title={showBlog?.attributes?.Seo?.metaTitle}
-            description={
-              showBlog?.attributes?.Seo?.metaDiscription?.slice(0, 100) + "..."
-            }
-            image={
-              mediaUrl + showBlog?.attributes?.coverImage?.data?.attributes?.url
-            }
-            url={window.location.href}
+            title={showBlog?.Seo?.metaTitle}
+            description={showBlog?.Seo?.metaDiscription?.slice(0, 100) + "..."}
+            image={mediaUrl + showBlog?.coverImage?.data?.attributes?.url}
+            url={"https://www.lighthouse.storage/"}
           />
           <div className="bg_pattern4"></div>
           <div className="bg_pattern5"></div>
@@ -119,21 +125,20 @@ function ViewBlog() {
                   <div className={Styles.img}>
                     <ImageBox
                       src={
-                        mediaUrl +
-                        showBlog?.attributes?.coverImage?.data?.attributes?.url
+                        mediaUrl + showBlog?.coverImage?.data?.attributes?.url
                       }
                       alt="blogImage"
                       layout="fill"
                     />
                   </div>
 
-                  <p className={Styles.title}>{showBlog?.attributes?.title}</p>
+                  <p className={Styles.title}>{showBlog?.title}</p>
 
                   <div className={Styles.infobar}>
                     <span className={Styles.date}>
                       {" "}
                       <MdUpdate />
-                      &nbsp; {showBlog?.attributes?.publishedAt?.split("T")[0]}
+                      &nbsp; {showBlog?.publishedAt?.split("T")[0]}
                     </span>
 
                     <div className={Styles.share}>
@@ -152,7 +157,7 @@ function ViewBlog() {
                     <ReactMarkdown
                       linkTarget={"_blank"}
                       // eslint-disable-next-line react/no-children-prop
-                      children={showBlog?.attributes?.description?.replaceAll(
+                      children={showBlog?.description?.replaceAll(
                         "/uploads/",
                         `${mediaUrl}/uploads/`
                       )}
@@ -162,7 +167,7 @@ function ViewBlog() {
                   <div className={Styles.author}>
                     <MdSupervisedUserCircle />
                     &nbsp;
-                    {showBlog?.attributes?.author}
+                    {showBlog?.author}
                   </div>
                 </div>
               </div>

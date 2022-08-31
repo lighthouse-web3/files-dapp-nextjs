@@ -1,12 +1,17 @@
 import ImageBox from "../ImageBox/ImageBox";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { mediaUrl } from "../../utils/Data/config";
 import Styles from "./featurepoint.module.scss";
 
-function featurepoint({ image, title, content, index }) {
-  const { innerWidth: width } = window;
+function Featurepoint({ image, title, content, index }) {
+  const [width, setWidth] = useState(0);
+  useEffect(() => {
+    setWidth(typeof window !== "undefined" ? window["innerWidth"] : 0);
+  }, []);
 
-  return (
+  return width > 0 ? (
+    <></>
+  ) : (
     <div
       className={`${Styles.featurepointContainer}  ${
         index % 2 === 0 ? Styles.containerRow : Styles.containerRowReverse
@@ -50,4 +55,4 @@ function featurepoint({ image, title, content, index }) {
   );
 }
 
-export default featurepoint;
+export default Featurepoint;

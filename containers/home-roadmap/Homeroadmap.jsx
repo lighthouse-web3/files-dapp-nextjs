@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Roadmapquater, RoadmapQuaterMobile } from "../../components";
 
 import Styles from "./homeroadmap.module.scss";
 
+//  componentDidMount() {
+//   console.log('window.innerHeight', window.innerHeight);
+// }
+
 function Homeroadmap({ contentData }) {
-  const { innerWidth: width } = window;
+  const [width, setWidth] = useState(null);
+  useEffect(() => {
+    setWidth(window["innerWidth"]);
+  }, []);
 
   const roadmapData = contentData;
   return (
