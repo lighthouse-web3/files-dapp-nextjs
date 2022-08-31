@@ -13,10 +13,10 @@ import { Footer, Header } from "../../containers";
 import { baseUrl, mediaUrl } from "../../utils/Data/config";
 import ReactMarkdown from "react-markdown";
 import { notify } from "../../utils/services/notification";
-import { Helmet } from "react-helmet";
-import { useRouter } from "next/router";
 
+import { useRouter } from "next/router";
 import Styles from "../../styles/viewBlog.module.scss";
+import Head from "next/head";
 
 const getBlogByID = async (blogs, id, setShowBlog) => {
   console.log("getblogBYID", blogs, id);
@@ -81,7 +81,7 @@ function ViewBlog() {
     <div className={Styles.viewBlog}>
       {showPage && (
         <>
-          <Helmet>
+          <Head>
             <meta property="og:url" content="https://www.lighthouse.storage/" />
             <meta
               property="og:title"
@@ -90,7 +90,7 @@ function ViewBlog() {
             <meta
               property="og:description"
               content={
-                showBlog?.attributes?.Seo?.metaDiscription.slice(0, 100) +
+                showBlog?.attributes?.Seo?.metaDiscription?.slice(0, 100) +
                   "..." ||
                 "Permanent Storage Redefined | store files on decentralized network for lifetime at a fixed price"
               }
@@ -103,7 +103,7 @@ function ViewBlog() {
                 "https://www.lighthouse.storage/logo.png"
               }
             />
-          </Helmet>
+          </Head>
           <div className="bg_pattern4"></div>
           <div className="bg_pattern5"></div>
           <Header />
