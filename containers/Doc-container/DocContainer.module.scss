@@ -1,0 +1,27 @@
+.DocContainer {
+  .title {
+    width: 100%;
+  }
+  .cardContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+
+    .card {
+      width: 30%;
+      height: 250px;
+      border-radius: 10px;
+      border: 2px solid transparent;
+      background: linear-gradient(45deg, red, blue) border-box;
+      -webkit-mask: linear-gradient(#fff 0 0) padding-box,
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      .title {
+        font-size: 1rem;
+        color: white;
+      }
+    }
+  }
+}

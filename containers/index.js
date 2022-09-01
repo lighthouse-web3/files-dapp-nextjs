@@ -14,3 +14,4 @@ export { default as AboutAngels } from "./about-angels/AboutAngels";
 export { default as FAQContainer } from "./Faq-container/FaqContainer";
 export { default as BlogList } from "./blog-list/BlogList";
 export { default as BlogRecent } from "./blog-recent/BlogRecent";
+export { default as DocContainer } from "./Doc-container/DocContainer";
