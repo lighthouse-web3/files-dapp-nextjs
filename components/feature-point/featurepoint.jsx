@@ -4,12 +4,12 @@ import { mediaUrl } from "../../utils/Data/config";
 import Styles from "./featurepoint.module.scss";
 
 function Featurepoint({ image, title, content, index }) {
-  const [width, setWidth] = useState(0);
+  const [width, setWidth] = useState(null);
   useEffect(() => {
-    setWidth(typeof window !== "undefined" ? window["innerWidth"] : 0);
+    setWidth(window["innerWidth"]);
   }, []);
 
-  return width > 0 ? (
+  return false ? (
     <></>
   ) : (
     <div

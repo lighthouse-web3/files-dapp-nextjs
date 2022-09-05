@@ -35,6 +35,7 @@ function HomePage({ homepageData }) {
   const [contentData, setContentData] = useState(homepageData);
   return (
     <div className={HomepageStyles.homepage}>
+      {console.log("data", contentData)}
       {homepageData && (
         <>
           <MetaData />
