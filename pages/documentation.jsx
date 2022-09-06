@@ -4,6 +4,7 @@ import { baseUrl } from "../utils/Data/config";
 import { DiscordFloat, MetaData } from "../components";
 import { DocContainer, Footer, Header } from "../containers";
 import Styles from "../styles/documentation.module.scss";
+import DocContainer2 from "../containers/Doc-container2/DocContainer";
 
 export const getStaticProps = async () => {
   let documentation = null;
@@ -33,6 +34,7 @@ function Documentation({ documentation }) {
           <div className="bg_pattern5"></div>
           <Header />
           {contentData && <DocContainer contentData={contentData} />}
+          {contentData && <DocContainer2 contentData={contentData} />}
           <Footer />
           <DiscordFloat />
         </>

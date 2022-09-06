@@ -14,10 +14,32 @@ function DocContainer() {
 
       <div className={Styles.cardContainer + " section__padding"}>
         <div className={Styles.card}>
-          <div className={Styles.title}>Concept</div>
+          <div className={Styles.cardBorder}></div>
+          <div className={Styles.content}>
+            <p className={Styles.title}>sss</p>
+            <p className={Styles.description}>
+              Understand the concepts of Lighthouse, which makes it so unique
+            </p>
+          </div>
         </div>
-        <div className={Styles.card}></div>
-        <div className={Styles.card}></div>
+        <div className={Styles.card}>
+          <div className={Styles.cardBorder}></div>
+          <div className={Styles.content}>
+            <p className={Styles.title}>sss</p>
+            <p className={Styles.description}>
+              Understand the concepts of Lighthouse, which makes it so unique
+            </p>
+          </div>
+        </div>
+        <div className={Styles.card}>
+          <div className={Styles.cardBorder}></div>
+          <div className={Styles.content}>
+            <p className={Styles.title}>sss</p>
+            <p className={Styles.description}>
+              Understand the concepts of Lighthouse, which makes it so unique
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );
