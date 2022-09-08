@@ -34,5 +34,9 @@
     color: white;
     font-family: var(--font-primary);
     opacity: 0.9;
+
+    a{
+      color: inherit;
+    }
   }
 }
