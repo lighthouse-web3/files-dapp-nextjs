@@ -32,15 +32,32 @@
         padding: 1rem;
         color: white;
         font-family: "ABeeZee";
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
         .title {
           font-style: normal;
           font-weight: 400;
           font-size: 2.5rem;
+          margin-bottom: 1rem;
         }
         .description {
           font-size: 1.2rem;
           line-height: 24px;
         }
+
+        .next {
+          font-size: 1.5rem;
+          color: white;
+          justify-content: flex-start;
+          align-items: center;
+          display: flex;
+        }
+      }
+
+      &:hover {
+        transition-duration: 1s;
+        transform: scale(1.02);
       }
     }
   }

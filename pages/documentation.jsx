@@ -21,7 +21,7 @@ export const getStaticProps = async () => {
 
 function Documentation({ documentation }) {
   const [contentData, setContentData] = useState("documentation");
-  console.log(documentation);
+  console.log(documentation, "Documentation");
 
   return (
     <div className={Styles.Documentation}>

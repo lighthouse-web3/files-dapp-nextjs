@@ -23,12 +23,19 @@
       padding: 10px 20px;
       display: flex;
       align-items: center;
+      margin: 1.3rem 0rem;
+
+      &:hover {
+        transition-duration: 0.2s;
+        transform: translateY(-2px);
+      }
       .icon {
         font-size: 2rem;
         display: flex;
         justify-content: center;
         align-items: center;
         margin-right: 10px;
+        color: white;
       }
       .link {
         width: 100%;
@@ -51,7 +58,7 @@
   .seprator {
     width: 10px;
     height: 100%;
-    min-height: 200px;
+    min-height: 40vh;
     margin: 0 1rem;
     background: linear-gradient(45deg, #3918ff, #db00ff) border-box;
   }
