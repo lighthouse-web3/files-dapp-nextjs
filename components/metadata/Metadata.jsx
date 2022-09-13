@@ -36,10 +36,14 @@ function Metadata({ title, description, url, image }) {
       <meta data-rh="true"  name="twitter:title" content={title} />
       <meta data-rh="true"  name="twitter:description" content={description} />
       <meta data-rh="true"  name="twitter:image" content={image} /> */}
-
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta name="color-scheme" content="dark" />
+      <meta name="author" content="Lighthouse" />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:site" content="@LighthouseWeb3" />
       <meta name="twitter:creator" content="@LighthouseWeb3" />
+      <meta property="og:type" content="website" />
+      <meta property="og:site_name" content="Lighthouse Storage" />
       <meta property="og:url" content={url} />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
