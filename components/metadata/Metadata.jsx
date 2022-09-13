@@ -43,7 +43,7 @@ function Metadata({ title, description, url, image }) {
       <meta property="og:url" content={url} />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
-      <meta content={image} />
+      <meta property="og:image" content={image} />
     </Head>
   );
 }
