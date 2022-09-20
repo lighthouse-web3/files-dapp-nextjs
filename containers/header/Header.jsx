@@ -34,8 +34,8 @@ const links = [
   },
   {
     title: "Documentation",
-    path: "",
-    href: "https://lighthouse-storage.gitbook.io/lighthouse/",
+    path: "/documentation",
+    href: "",
   },
 ];
 

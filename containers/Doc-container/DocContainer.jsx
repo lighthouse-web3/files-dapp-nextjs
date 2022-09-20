@@ -34,7 +34,13 @@ function DocContainer() {
 
       <div className={Styles.cardContainer + " section__padding"}>
         {cards.map((card, index) => (
-          <div className={Styles.card} key={index}>
+          <div
+            className={Styles.card}
+            key={index}
+            onClick={() => {
+              window.open(card.link);
+            }}
+          >
             <div className={Styles.cardBorder}></div>
             <div className={Styles.content}>
               <div>

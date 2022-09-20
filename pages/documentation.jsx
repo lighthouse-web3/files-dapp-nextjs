@@ -5,6 +5,7 @@ import { DiscordFloat, MetaData } from "../components";
 import { DocContainer, Footer, Header } from "../containers";
 import Styles from "../styles/documentation.module.scss";
 import DocContainer2 from "../containers/Doc-container2/DocContainer";
+import DiscordBox from "../components/discordBox/DiscordBox";
 
 export const getStaticProps = async () => {
   let documentation = null;
@@ -35,6 +36,11 @@ function Documentation({ documentation }) {
           <Header />
           {contentData && <DocContainer contentData={contentData} />}
           {contentData && <DocContainer2 contentData={contentData} />}
+          {/* {contentData && (
+            <div className="section__padding">
+              <DiscordBox contentData={contentData} />
+            </div>
+          )} */}
           <Footer />
           <DiscordFloat />
         </>
