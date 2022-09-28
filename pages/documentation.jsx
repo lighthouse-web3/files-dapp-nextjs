@@ -10,8 +10,9 @@ import DiscordBox from "../components/discordBox/DiscordBox";
 export const getStaticProps = async () => {
   let documentation = null;
   try {
-    const res = await axios.get(`${baseUrl}/documentation`);
-    documentation = res["status"] === 200 ? res?.["data"]?.["data"] : "null";
+    const res = await axios.get(`${baseUrl}/documentation-page?populate=*`);
+    documentation =
+      res["status"] === 200 ? res?.["data"]?.["data"]?.["attributes"] : "null";
   } catch (error) {}
   return {
     props: {
@@ -21,7 +22,7 @@ export const getStaticProps = async () => {
 };
 
 function Documentation({ documentation }) {
-  const [contentData, setContentData] = useState("documentation");
+  const [contentData, setContentData] = useState(documentation);
   console.log(documentation, "Documentation");
 
   return (

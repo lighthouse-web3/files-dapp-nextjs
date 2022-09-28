@@ -21,19 +21,16 @@ const cards = [
   },
 ];
 
-function DocContainer() {
+function DocContainer({ contentData }) {
   return (
     <div className={Styles.DocContainer + " section__padding"} id="doc">
       <div className={Styles.title}>
-        <p className="gradient__text mainTitle">Lighthouse Documentation</p>
-        <p className="mainDescription">
-          Lighthouse is a permanent decentralized file storage protocol that
-          allows the ability to pay once and store forever
-        </p>
+        <p className="gradient__text mainTitle">{contentData?.title}</p>
+        <p className="mainDescription">{contentData?.subtitle}</p>
       </div>
 
       <div className={Styles.cardContainer + " section__padding"}>
-        {cards.map((card, index) => (
+        {contentData?.documentationCard.map((card, index) => (
           <div
             className={Styles.card}
             key={index}
@@ -45,7 +42,7 @@ function DocContainer() {
             <div className={Styles.content}>
               <div>
                 <p className={Styles.title}>{card.title}</p>
-                <p className={Styles.description}>{card.description}</p>
+                <p className={Styles.description}>{card.subtitle}</p>
               </div>
 
               <a

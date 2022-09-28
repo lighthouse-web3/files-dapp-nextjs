@@ -42,13 +42,13 @@ const getResourceTypeLogo = (type) => {
   return icon;
 };
 
-function DocContainer2() {
+function DocContainer2({ contentData }) {
   return (
     <div className={Styles.DocContainer2 + " section__padding"}>
       <div className={Styles.listContainer + " " + Styles.left}>
         <div className={Styles.title}>Developers Links</div>
 
-        {repos.map((repo, index) => (
+        {contentData?.developerLinks.map((repo, index) => (
           <div
             className={Styles.box + " ptr"}
             key={index}
@@ -59,24 +59,24 @@ function DocContainer2() {
             <div className={Styles.icon}>
               <AiFillGithub />
             </div>
-            <div className={Styles.link}>{repo.name}</div>
+            <div className={Styles.link}>{repo.title}</div>
           </div>
         ))}
       </div>
       <div className={Styles.seprator}></div>
       <div className={Styles.listContainer + " " + Styles.right}>
         <div className={Styles.title}>Resources</div>
-        {resources.map((repo, index) => (
+        {contentData?.resources.map((resource, index) => (
           <div
             className={Styles.box + " ptr"}
             key={index}
             onClick={() => {
-              window.open(repo.link, "_blank");
+              window.open(resource.link, "_blank");
             }}
           >
-            <div className={Styles.link}>{repo.name}</div>
+            <div className={Styles.link}>{resource.title}</div>
             <div className={Styles.icon} style={{ marginLeft: "10px" }}>
-              {getResourceTypeLogo(repo.type)}
+              {getResourceTypeLogo(resource.type)}
             </div>
           </div>
         ))}
