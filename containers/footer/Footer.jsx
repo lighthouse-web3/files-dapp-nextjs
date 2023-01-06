@@ -48,9 +48,15 @@ function Footer() {
               FAQs
             </a>
           </p>
-          {/* <p>
-                      <a onClick={() => { _navigate.push('/career') }} >Careers</a>
-                    </p> */}
+          <p>
+            <a
+              onClick={() => {
+                _navigate.push("/pricing");
+              }}
+            >
+              Pricing
+            </a>
+          </p>
         </div>
         <div className={Styles.policies}>
           <p className={Styles.fTitle}>Policies</p>

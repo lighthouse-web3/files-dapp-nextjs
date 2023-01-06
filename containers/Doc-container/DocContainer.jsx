@@ -6,18 +6,18 @@ const cards = [
   {
     title: "Introduction",
     description: "Learn about lighthouse and how it is diffrent",
-    link: "https://lighthouse-storage.gitbook.io/lighthouse/",
+    link: "https://docs.lighthouse.storage/lighthouse/",
   },
   {
     title: "CLI Commands",
     description:
       "Learn to install the package globally on your system using our npm package",
-    link: "https://lighthouse-storage.gitbook.io/lighthouse/cli-tool/cli-commands",
+    link: "https://docs.lighthouse.storage/lighthouse/cli-tool/cli-commands",
   },
   {
     title: "Examples",
     description: "Go through our detailed code examples",
-    link: "https://lighthouse-storage.gitbook.io/lighthouse/javascript/code-examples",
+    link: "https://docs.lighthouse.storage/lighthouse/javascript/code-examples",
   },
 ];
 
