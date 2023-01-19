@@ -2,25 +2,6 @@ import React from "react";
 import { MdNavigateNext } from "react-icons/md";
 import Styles from "./DocContainer.module.scss";
 
-const cards = [
-  {
-    title: "Introduction",
-    description: "Learn about lighthouse and how it is diffrent",
-    link: "https://docs.lighthouse.storage/lighthouse/",
-  },
-  {
-    title: "CLI Commands",
-    description:
-      "Learn to install the package globally on your system using our npm package",
-    link: "https://docs.lighthouse.storage/lighthouse/cli-tool/cli-commands",
-  },
-  {
-    title: "Examples",
-    description: "Go through our detailed code examples",
-    link: "https://docs.lighthouse.storage/lighthouse/javascript/code-examples",
-  },
-];
-
 function DocContainer({ contentData }) {
   return (
     <div className={Styles.DocContainer + " section__padding"} id="doc">
