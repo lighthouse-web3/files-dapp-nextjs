@@ -109,6 +109,15 @@
     .navbarButton {
       display: none;
     }
+
+    .linksContainer,
+    .MobileMenu {
+      p {
+        a {
+          font-size: calc(15px + 1vw);
+        }
+      }
+    }
     .navbarMobileMenu {
       display: block;
     }
